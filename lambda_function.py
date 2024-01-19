@@ -65,9 +65,9 @@ def lambda_handler(event, context):
                         actual_section = section['classSections'][k]['section']
 
                         logger.info(
-                            f"{course_name} {lecture_or_discussion} {actual_section} has opened up!")
-                        publish_to_sns(course_name, lecture_or_discussion,
-                                       actual_section, course['course_id'])
+                            f"{course['course_name']} {lecture_or_discussion} {actual_section} has opened up!")
+                        publish_to_sns(course['course_name'], lecture_or_discussion,
+                                       actual_section, section['classSections'][k]['classNbr'])
                         # update database
                         table.update_item(
                             Key={
